@@ -1,3 +1,7 @@
-<p>
-  home works!
-</p>
+<div class="row">
+  <nav class="nav">
+    <a class="nav-link" [routerLink]="['./list']">List of personal posts</a>
+    <a class="nav-link" [routerLink]="['./create']">Create a new post</a>
+  </nav>
+</div>
+<router-outlet></router-outlet>

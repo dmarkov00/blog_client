@@ -16,13 +16,11 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {
     path: 'personal-posts', component: HomeComponentPersonalPosts, children: [
-      {path: '', redirectTo: '/list', pathMatch: 'full'},
+      {path: '', redirectTo: 'list', pathMatch: 'full'},
       {path: 'list', component: ListComponent},
       {path: 'create', component: CreatePostComponent}
     ]
-  },
-  {path: 'personal-posts/create', component: CreatePostComponent}
-
+  }
 
 ];
 
