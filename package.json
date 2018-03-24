@@ -24,9 +24,13 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
+    "es6-shim": "^0.35.3",
     "express": "^4.16.3",
+    "jquery": "^3.3.1",
     "rxjs": "^5.5.6",
+    "serializer.ts": "0.0.12",
     "typescript": "~2.5.3",
     "zone.js": "^0.8.19"
   },
@@ -53,5 +57,5 @@
   "engines": {
     "node": "8.10.0",
     "npm": "5.7.1"
-}
+  }
 }
