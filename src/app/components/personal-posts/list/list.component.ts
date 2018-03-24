@@ -22,7 +22,6 @@ export class ListComponent implements OnInit {
   getPersonalPosts() {
     this.postService.getPersonalPosts().subscribe(posts => {
       this.personalPosts = posts;
-      console.log(posts);
     });
   }
 

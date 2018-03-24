@@ -18,10 +18,6 @@ export class LoginComponent implements OnInit {
   login(username: String, password: String): void {
 
     const user = {'username': username, 'password': password} as User;
-    // const asd: User = {
-    //   'username': 'john'
-    // };
-
 
     this.userService.login(user)
       .subscribe(result => {

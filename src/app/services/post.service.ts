@@ -10,18 +10,22 @@ const httpOptions = {
 
 @Injectable()
 export class PostService {
-  private baseUrl = 'https://seprapi.prtl.fyi/';
+  private baseUrl = 'https://seprapi.prtl.fyi/posts/';
 
   constructor(private http: HttpClient) {
   }
 
   getPosts(): Observable<Post[]> {
 
-    return this.http.get<Post[]>(this.baseUrl + 'posts');
+    return this.http.get<Post[]>(this.baseUrl);
   }
 
   getPersonalPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl + 'posts/own', {withCredentials: true});
+    return this.http.get<Post[]>(this.baseUrl + 'own', {withCredentials: true});
+  }
+
+  createPost(post: Post): Observable<any> {
+    return this.http.post(this.baseUrl, post, {withCredentials: true});
   }
 
 }
