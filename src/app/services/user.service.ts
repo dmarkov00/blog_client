@@ -10,12 +10,15 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'https://seprapi.prtl.fyi/auth/';
 
 
   constructor(private http: HttpClient) {
   }
 
+  register(user: User): Observable<any> {
+    return this.http.post<User>(this.baseUrl + 'register', user);
+  }
 
 }
 

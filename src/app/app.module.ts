@@ -13,7 +13,9 @@ import {AppRoutingModule} from './/app-routing.module';
 import {UserService} from './services/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {PostService} from './services/post.service';
+import {FormsModule} from '@angular/forms';
 
+// import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import {PostService} from './services/post.service';
     RegisterComponent,
     PostComponent,
     CreatePostComponent,
-    HomeComponent
+    HomeComponent,
+    // ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule, FormsModule
+
   ],
   providers: [UserService, PostService],
   bootstrap: [AppComponent]
