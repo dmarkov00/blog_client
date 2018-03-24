@@ -10,7 +10,7 @@ export class PostComponent implements OnInit {
 
   constructor() { }
 
-  @Input() hero: Post;
+  @Input() post: Post;
 
   ngOnInit() {
   }
