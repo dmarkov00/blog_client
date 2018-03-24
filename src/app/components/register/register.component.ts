@@ -15,10 +15,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register(email: string, password: string): void {
-    this.userService.register(email, password)
-      .subscribe(result => {
-
-      });
+    // this.userService.register(email, password)
+    //   .subscribe(result => {
+    //
+    //   });
 
   }
 }
