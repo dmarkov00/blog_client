@@ -20,8 +20,9 @@ export class HomeComponent implements OnInit {
 
   getPosts(): void {
     this.postService.getPosts().subscribe(posts => {
+
       this.posts = posts;
-      console.log(this.posts);
+      // console.log(this.posts);
     });
   }
 
