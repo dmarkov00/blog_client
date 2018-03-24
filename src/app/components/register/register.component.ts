@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {User} from '../../models/User';
-import {ReactiveFormsModule} from '@angular/forms';
-
 
 @Component({
   selector: 'app-register',
@@ -21,6 +19,7 @@ export class RegisterComponent implements OnInit {
   register(username: String, password: String): void {
 
     const user = {'username': username, 'password': password} as User;
+    console.log(user);
 
     // const asd: User = {
     //   'username': 'john'
