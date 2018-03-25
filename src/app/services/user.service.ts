@@ -25,8 +25,13 @@ export class UserService {
   }
 
   login(user: User): Observable<any> {
-    return this.http.post<User>(this.baseUrl + 'login', user, {withCredentials: true});
-
+    return this.http.post<any>(this.baseUrl + 'login', user, {
+      withCredentials: true,
+      observe: 'response'
+    }).pipe(catchError(err => {
+      return of(err);
+      // console.log(err);
+    }));
   }
 
   isUserAuthenticated(): Observable<boolean> {
