@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 import {ListComponent} from './components/personal-posts/list/list.component';
 import {HomeComponent as HomeComponentPersonalPosts} from './components/personal-posts/home/home.component';
 import {CreatePostComponent} from './components/personal-posts/create-post/create-post.component';
+import {AnonymousUserGuard} from './guards/anonymous-user.guard';
 
 // import {ReactiveFormsModule} from '@angular/forms';
 
@@ -35,10 +36,12 @@ import {CreatePostComponent} from './components/personal-posts/create-post/creat
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule, FormsModule
+    AppRoutingModule,
+    FormsModule
 
   ],
-  providers: [UserService, PostService],
+  providers: [UserService, PostService, AnonymousUserGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
