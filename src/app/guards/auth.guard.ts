@@ -12,10 +12,10 @@ export class AuthGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): boolean {
-    if (this.userService.isUserAuthenticated) {
+    if (this.userService.isUserAuthenticated()) {
       return true;
     } else {
-      alert('You are not authorized, please login in');
+      window.alert('You are not authorized or your session expired, please login in');
       this.router.navigate(['/login']);
       return false;
     }
