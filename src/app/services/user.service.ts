@@ -25,5 +25,9 @@ export class UserService {
 
   }
 
+  isUserAuthenticated(): boolean {
+    return false;
+  }
+
 }
 
