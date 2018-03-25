@@ -16,10 +16,8 @@ import {FormsModule} from '@angular/forms';
 import {ListComponent} from './components/personal-posts/list/list.component';
 import {HomeComponent as HomeComponentPersonalPosts} from './components/personal-posts/home/home.component';
 import {CreatePostComponent} from './components/personal-posts/create-post/create-post.component';
-import {AnonymousUserGuard} from './guards/anonymous-user.guard';
 import {AuthGuard} from './guards/auth.guard';
-
-// import {ReactiveFormsModule} from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +39,7 @@ import {AuthGuard} from './guards/auth.guard';
     FormsModule
 
   ],
-  providers: [UserService, PostService, AnonymousUserGuard, AuthGuard
+  providers: [UserService, PostService, AuthGuard, CookieService
   ],
   bootstrap: [AppComponent]
 })
