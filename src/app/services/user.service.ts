@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {User} from '../models/User';
 import {Observable} from 'rxjs/Observable';
-import {CookieService} from 'ngx-cookie-service';
 import 'rxjs/add/operator/map';
 import {catchError} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
@@ -15,9 +14,8 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   private baseUrl = 'https://seprapi.prtl.fyi/auth/';
-  public isAuath: boolean;
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {
+  constructor(private http: HttpClient) {
   }
 
   register(user: User): Observable<any> {
@@ -39,7 +37,6 @@ export class UserService {
   isUserAuthenticated(): Observable<boolean> {
     return this.http.get <boolean>('https://seprapi.prtl.fyi/posts/own', {withCredentials: true, observe: 'response'})
       .map(resp => {
-        this.isAuath = resp.ok;
         return resp.ok;
       }).pipe(catchError(this.handleError<any>()));
   }
