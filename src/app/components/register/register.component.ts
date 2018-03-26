@@ -20,17 +20,16 @@ export class RegisterComponent implements OnInit {
   register(username: String, password: String): void {
 
     const user = {'username': username, 'password': password} as User;
-    console.log(user);
-
-    // const asd: User = {
-    //   'username': 'john'
-    // };
-
 
     this.userService.register(user)
       .subscribe(result => {
+        if (result.ok) {
+          alert('Successful registration. You\'ll be redirected to the login page.');
 
-        console.log(result);
+          this.router.navigate(['/login']);
+        } else {
+          alert(result.error.message);
+        }
       });
 
   }

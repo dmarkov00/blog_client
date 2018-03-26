@@ -15,13 +15,16 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   private baseUrl = 'https://seprapi.prtl.fyi/auth/';
-
+  public isAuath: boolean;
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
   register(user: User): Observable<any> {
-    return this.http.post<User>(this.baseUrl + 'register', user);
+    return this.http.post<any>(this.baseUrl + 'register', user, {observe: 'response'})
+      .pipe(catchError(err => {
+        return of(err);
+      }));
   }
 
   login(user: User): Observable<any> {
@@ -30,13 +33,13 @@ export class UserService {
       observe: 'response'
     }).pipe(catchError(err => {
       return of(err);
-      // console.log(err);
     }));
   }
 
   isUserAuthenticated(): Observable<boolean> {
     return this.http.get <boolean>('https://seprapi.prtl.fyi/posts/own', {withCredentials: true, observe: 'response'})
       .map(resp => {
+        this.isAuath = resp.ok;
         return resp.ok;
       }).pipe(catchError(this.handleError<any>()));
   }
