@@ -35,4 +35,12 @@ export class PostService {
     }));
   }
 
+  deletePost(postId: string): Observable<any> {
+    return this.http.delete(this.baseUrl + postId, {
+      withCredentials: true
+    }).pipe(catchError(err => {
+      return of(err);
+    }));
+  }
+
 }
