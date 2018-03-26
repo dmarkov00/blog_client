@@ -3,7 +3,12 @@
     <h4 class="display-15">{{post.title}}</h4>
     <p class="lead">{{post.body}}.</p>
     <hr class="my-4">
-    <p>Author: {{post.user.username}}</p>
+    <p>Author: {{post.user.username}},
+
+      <ng-container *ngIf="post.ip">
+        Posted from: {{post.ip}}(IP)
+      </ng-container>
+    </p>
 
   </div>
 </div>
