@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
         if (result.ok) {
           alert('You are going to be logged in and redirected to the home page');
           this.dataService.isAuth = true;
+
           this.router.navigate(['home']);
         } else {
           alert(result.error.message);

@@ -10,7 +10,6 @@ import {DataService} from '../../../services/data.service';
 })
 export class ListComponent implements OnInit {
 
-  personalPosts: Post[] = [];
 
   constructor(private postService: PostService, public dataService: DataService) {
   }

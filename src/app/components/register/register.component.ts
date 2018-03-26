@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
           this.userService.login(user).subscribe(loginResult => {
             if (loginResult.ok) {
               this.dataService.isAuth = true;
+
               this.router.navigate(['home']);
             } else {
               alert(loginResult.error.message);

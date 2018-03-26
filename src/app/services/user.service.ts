@@ -34,6 +34,12 @@ export class UserService {
     }));
   }
 
+  logout(): Observable<boolean> {
+    return this.http.post<any>(this.baseUrl + 'logout', {}, {observe: 'response'}).map(resp => {
+      return resp.ok;
+    }).pipe(catchError(this.handleError<any>()));
+  }
+
   isUserAuthenticated(): Observable<boolean> {
     return this.http.get <boolean>('https://seprapi.prtl.fyi/posts/own', {withCredentials: true, observe: 'response'})
       .map(resp => {
