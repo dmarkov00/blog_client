@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Observable} from 'rxjs/Observable';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,14 +10,13 @@ import {Observable} from 'rxjs/Observable';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, public dataService: DataService) {
   }
 
-  isLoggedIn: Observable<boolean>;
-
   ngOnInit() {
-    this.isLoggedIn = this.userService.isUserAuthenticated();
-    console.log('caller');
+    this.userService.isUserAuthenticated().subscribe(isAuth => {
+      this.dataService.isAuth = isAuth;
+    });
   }
 
 }

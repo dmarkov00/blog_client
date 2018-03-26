@@ -18,6 +18,7 @@ import {HomeComponent as HomeComponentPersonalPosts} from './components/personal
 import {CreatePostComponent} from './components/personal-posts/create-post/create-post.component';
 import {AuthGuard} from './guards/auth.guard';
 import {AnonymousGuard} from './guards/anonymous.guard';
+import {DataService} from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {AnonymousGuard} from './guards/anonymous.guard';
     FormsModule
 
   ],
-  providers: [UserService, PostService, AuthGuard, AnonymousGuard
+  providers: [UserService, PostService, AuthGuard, AnonymousGuard, DataService
   ],
   bootstrap: [AppComponent]
 })

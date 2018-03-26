@@ -1,6 +1,14 @@
-<div *ngIf="personalPosts">
+<div *ngIf="dataService.personalPosts">
+  <div *ngIf="dataService.personalPosts.posts != 0; else noposts">
 
-  <app-post *ngFor="let post of personalPosts.posts"
-            [post]="post">
-  </app-post>
+    <app-post *ngFor="let post of dataService.personalPosts.posts"
+              [post]="post">
+    </app-post>
+
+  </div>
+  <ng-template #noposts>
+    <div class="row justify-content-md-center">
+      <h5 class="nopost">You haven't made any posts yet!</h5>
+    </div>
+  </ng-template>
 </div>

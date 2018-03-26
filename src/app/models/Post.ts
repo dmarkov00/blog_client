@@ -5,4 +5,5 @@ export interface Post {
   title: string;
   body: string;
   user: User;
+  ip: String;
 }
