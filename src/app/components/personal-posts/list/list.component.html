@@ -1,0 +1,6 @@
+<div *ngIf="personalPosts">
+
+  <app-post *ngFor="let post of personalPosts.posts"
+            [post]="post">
+  </app-post>
+</div>
