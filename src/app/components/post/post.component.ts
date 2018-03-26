@@ -24,6 +24,8 @@ export class PostComponent implements OnInit {
   deletePost(postId: string) {
 
     this.snotifyService.confirm('Are you sure you want to delete this post?', 'Confirm deletion!', {
+      timeout: 10000,
+      showProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       buttons: [
