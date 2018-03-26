@@ -10,6 +10,7 @@ import {HomeComponent as HomeComponentPersonalPosts} from './components/personal
 // import {AnonymousUserGuard} from './guards/anonymous-user.guard';
 import {AuthGuard} from './guards/auth.guard';
 import {AnonymousGuard} from './guards/anonymous.guard';
+import {RouteNotFoundComponent} from './components/route-not-found/route-not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,8 +23,7 @@ const routes: Routes = [
       {path: 'list', component: ListComponent},
       {path: 'create', component: CreatePostComponent}
     ]
-  }
-
+  }, {path: '**', component: RouteNotFoundComponent},
 ];
 
 @NgModule({

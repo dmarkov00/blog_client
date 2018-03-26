@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../../models/Post';
 import {PostService} from '../../services/post.service';
+import {ActivatedRoute} from '@angular/router';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +13,21 @@ export class HomeComponent implements OnInit {
 
   posts: Post[] = [];
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getPosts();
+
+    this.route.queryParams
+      .subscribe(params => {
+        this.getPosts(params.admin);
+      });
   }
 
-  getPosts(): void {
-    this.postService.getPosts().subscribe(posts => {
+  getPosts(adminValue: string): void {
+    this.postService.getPosts(adminValue).subscribe(posts => {
 
       this.posts = posts;
-      // console.log(this.posts);
     });
   }
 

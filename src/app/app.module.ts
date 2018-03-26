@@ -20,6 +20,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {AnonymousGuard} from './guards/anonymous.guard';
 import {DataService} from './services/data.service';
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import { RouteNotFoundComponent } from './components/route-not-found/route-not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
     HomeComponent,
     ListComponent,
     HomeComponentPersonalPosts,
-    CreatePostComponent
+    CreatePostComponent,
+    RouteNotFoundComponent
 
   ],
   imports: [
