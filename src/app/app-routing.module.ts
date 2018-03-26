@@ -22,7 +22,7 @@ const routes: Routes = [
       {path: 'list', component: ListComponent},
       {path: 'create', component: CreatePostComponent}
     ]
-  }
+  }, {path: '**', component: HomeComponent, canActivate: [AnonymousGuard]},
 
 ];
 

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Post} from '../models/Post';
 import {catchError} from 'rxjs/operators';
@@ -17,9 +17,12 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
-  getPosts(): Observable<Post[]> {
+  getPosts(adminValue: string): Observable<Post[]> {
 
-    return this.http.get<Post[]>(this.baseUrl);
+    const options = adminValue ?
+      {params: new HttpParams().set('admin', adminValue)} : {};
+
+    return this.http.get<Post[]>(this.baseUrl, options);
   }
 
   getPersonalPosts(): Observable<Post[]> {
