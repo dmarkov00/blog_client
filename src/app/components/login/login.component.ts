@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
       .subscribe(result => {
         if (result.ok) {
           alert('You are going to be logged in and redirected to the home page');
-
+          this.dataService.isAuth = true;
           this.router.navigate(['home']);
         } else {
           alert(result.error.message);

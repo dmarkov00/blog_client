@@ -11,7 +11,7 @@
             <a class="nav-link" routerLink="/home">Posts feed</a>
           </li>
         </ul>
-        <ng-container *ngIf="isLoggedIn | async;else anonymous">
+        <ng-container *ngIf="dataService.isAuth ;else anonymous">
           <ul class="navbar-nav " #loggedin>
             <li class="nav-item">
               <a class="nav-link" routerLink="/personal-posts">Personal posts</a>

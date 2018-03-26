@@ -3,11 +3,12 @@ import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '
 import {Observable} from 'rxjs/Observable';
 import {UserService} from '../services/user.service';
 import 'rxjs/add/operator/take';
+import {DataService} from '../services/data.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private dataService: DataService) {
 
   }
 
@@ -18,8 +19,10 @@ export class AuthGuard implements CanActivate {
       .map((isLoggedIn: boolean) => {
         if (!isLoggedIn) {
           this.router.navigate(['/login']);
+          this.dataService.isAuth = isLoggedIn;
           return false;
         }
+        this.dataService.isAuth = isLoggedIn;
         return true;
       });
   }

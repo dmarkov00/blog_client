@@ -6,6 +6,8 @@ export class DataService {
 
   personalPosts: Post[];
 
+  isAuth: boolean;
+
   constructor() {
   }
 
