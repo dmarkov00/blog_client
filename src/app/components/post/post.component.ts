@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../../models/Post';
 import {PostService} from '../../services/post.service';
 import {Router} from '@angular/router';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-post',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private postService: PostService, private router: Router) {
+  constructor(private postService: PostService, private router: Router, private dataService: DataService) {
   }
 
   @Input() post: Post;
@@ -24,8 +25,11 @@ export class PostComponent implements OnInit {
     //   console.log('This was logged in the callback: ' + result);
     // });
     this.postService.deletePost(postId).subscribe(result => {
-      this.router.navigate(['/personal-posts/list']);
+      // if(result )
 
+      this.postService.getPersonalPosts().subscribe(updatedPosts => {
+        this.dataService.personalPosts = updatedPosts;
+      });
       console.log(result);
 
     });

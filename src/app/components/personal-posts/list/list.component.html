@@ -1,6 +1,6 @@
-<div *ngIf="personalPosts">
+<div *ngIf="dataService.personalPosts">
 
-  <app-post *ngFor="let post of personalPosts.posts"
+  <app-post *ngFor="let post of dataService.personalPosts.posts"
             [post]="post">
   </app-post>
 </div>
