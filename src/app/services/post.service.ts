@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Post} from '../models/Post';
+import {catchError} from 'rxjs/operators';
+import {of} from 'rxjs/observable/of';
 
 const httpOptions = {
   headers: new HttpHeaders()
@@ -25,7 +27,12 @@ export class PostService {
   }
 
   createPost(post: Post): Observable<any> {
-    return this.http.post(this.baseUrl, post, {withCredentials: true});
+    return this.http.post(this.baseUrl, post, {
+      withCredentials: true,
+      observe: 'response'
+    }).pipe(catchError(err => {
+      return of(err);
+    }));
   }
 
 }
