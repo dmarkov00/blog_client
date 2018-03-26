@@ -33,7 +33,6 @@ export class CreatePostComponent implements OnInit {
           closeOnClick: true,
           pauseOnHover: true
         });
-
         this.router.navigate(['/personal-posts/list']);
 
       } else {
