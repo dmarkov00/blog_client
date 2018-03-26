@@ -12,7 +12,8 @@ import {SnotifyService} from 'ng-snotify';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router, private dataService: DataService, private snotifyService: SnotifyService) {
+  constructor(private userService: UserService, private router: Router, private dataService: DataService,
+              private snotifyService: SnotifyService) {
   }
 
   ngOnInit() {
@@ -55,3 +56,4 @@ export class LoginComponent implements OnInit {
       pauseOnHover: true
     });
   }
+}
