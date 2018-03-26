@@ -27,8 +27,6 @@ export class RegisterComponent implements OnInit {
     this.userService.register(user)
       .subscribe(result => {
         if (result.ok) {
-
-          alert('Successful registration. You\'ll be logged in and redirected to home.');
           this.userService.login(user).subscribe(loginResult => {
             if (loginResult.ok) {
               this.dataService.isAuth = true;
@@ -59,6 +57,12 @@ export class RegisterComponent implements OnInit {
 
   displaySuccessNotification(): void {
     this.snotifyService.success('Successful registration.', {
+      timeout: 4000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true
+    });
+    this.snotifyService.success('You were logged in.', {
       timeout: 4000,
       showProgressBar: true,
       closeOnClick: true,
