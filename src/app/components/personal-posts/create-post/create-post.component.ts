@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Post} from '../../../models/Post';
 import {PostService} from '../../../services/post.service';
 import {Router} from '@angular/router';
+import {SnotifyService} from 'ng-snotify';
 
 @Component({
   selector: 'app-create-post',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private postService: PostService, private router: Router) {
+  constructor(private postService: PostService, private router: Router, private snotifyService: SnotifyService) {
   }
 
   ngOnInit() {
@@ -20,7 +21,18 @@ export class CreatePostComponent implements OnInit {
     const post = {'title': title, 'body': content} as Post;
     this.postService.createPost(post).subscribe(result => {
       if (result.ok) {
-        alert('Successfully created post. Redirecting to your personal posts');
+        this.snotifyService.success('Created new post.', {
+          timeout: 4000,
+          showProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true
+        });
+        this.snotifyService.success('You were redirected to your personal list.', {
+          timeout: 4000,
+          showProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true
+        });
         this.router.navigate(['/personal-posts/list']);
 
       } else {

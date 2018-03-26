@@ -19,6 +19,7 @@ import {CreatePostComponent} from './components/personal-posts/create-post/creat
 import {AuthGuard} from './guards/auth.guard';
 import {AnonymousGuard} from './guards/anonymous.guard';
 import {DataService} from './services/data.service';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
 @NgModule({
   declarations: [
@@ -37,10 +38,12 @@ import {DataService} from './services/data.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SnotifyModule
 
   ],
-  providers: [UserService, PostService, AuthGuard, AnonymousGuard, DataService
+  providers: [UserService, PostService, AuthGuard, AnonymousGuard, DataService, {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ],
   bootstrap: [AppComponent]
 })

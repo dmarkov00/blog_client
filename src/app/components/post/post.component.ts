@@ -3,6 +3,7 @@ import {Post} from '../../models/Post';
 import {PostService} from '../../services/post.service';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
+import {SnotifyService} from 'ng-snotify';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +12,8 @@ import {DataService} from '../../services/data.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private postService: PostService, private router: Router, private dataService: DataService) {
+  constructor(private postService: PostService, private router: Router, private dataService: DataService,
+              private snotifyService: SnotifyService) {
   }
 
   @Input() post: Post;
@@ -21,17 +23,30 @@ export class PostComponent implements OnInit {
 
   deletePost(postId: string) {
 
-    // bootbox.confirm('This is the default confirm!', function (result) {
-    //   console.log('This was logged in the callback: ' + result);
-    // });
-    this.postService.deletePost(postId).subscribe(result => {
-      // if(result )
+    this.snotifyService.confirm('Are you sure you want to delete this post?', 'Confirm deletion!', {
+      timeout: 10000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      buttons: [
+        {
+          text: 'Yes', action: () => {
+            this.postService.deletePost(postId).subscribe(result => {
 
-      this.postService.getPersonalPosts().subscribe(updatedPosts => {
-        this.dataService.personalPosts = updatedPosts;
-      });
-      console.log(result);
+              this.postService.getPersonalPosts().subscribe(updatedPosts => {
+                this.dataService.personalPosts = updatedPosts;
+              });
 
+            });
+          }, bold: false
+        },
+        {
+          text: 'No', action: () => {
+          }
+        },
+      ]
     });
+
+
   }
 }

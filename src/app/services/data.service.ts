@@ -8,6 +8,8 @@ export class DataService {
 
   isAuth: boolean;
 
+  loggedInUser: string;
+
   constructor() {
   }
 
