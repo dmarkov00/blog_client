@@ -35,7 +35,7 @@ export class UserService {
   }
 
   logout(): Observable<boolean> {
-    return this.http.post<any>(this.baseUrl + 'logout', {}, {observe: 'response'}).map(resp => {
+    return this.http.post<any>(this.baseUrl + 'logout', {}, {withCredentials: true, observe: 'response'}).map(resp => {
       return resp.ok;
     }).pipe(catchError(this.handleError<any>()));
   }

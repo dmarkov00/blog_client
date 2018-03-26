@@ -17,11 +17,11 @@
               <a class="nav-link" routerLink="/personal-posts">Personal posts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" (click)="logout()">Log out</a>
+              <a routerLink="" class="nav-link" (click)="logout()">Log out</a>
             </li>
-            <li class="nav-item">
-              <p>{{dataService.loggedInUser}}</p>
-            </li>
+            <!--<li class="nav-item">-->
+            <!--&lt;!&ndash;<p>{{dataService.loggedInUser}}</p>&ndash;&gt;-->
+            <!--</li>-->
           </ul>
         </ng-container>
         <ng-template #anonymous>
