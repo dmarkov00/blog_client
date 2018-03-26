@@ -8,11 +8,15 @@ import {Post} from '../../models/Post';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input() post: Post;
 
   ngOnInit() {
   }
 
+  deletePost(postId: String) {
+
+  }
 }

@@ -3,12 +3,17 @@
     <h4 class="display-15">{{post.title}}</h4>
     <p class="lead">{{post.body}}.</p>
     <hr class="my-4">
-    <p>Author: {{post.user.username}},
-
+    <div class="row justify-content-md-center">
+      <p>Author: {{post.user.username}}
+        <ng-container *ngIf="post.ip">
+          | Posted from: {{post.ip}}(IP)
+        </ng-container>
+      </p>
       <ng-container *ngIf="post.ip">
-        Posted from: {{post.ip}}(IP)
+      &nbsp; | &nbsp; <button type="button" class=" btn btn-danger btn-sm" (click)="deletePost(post.id)">
+          Delete
+        </button>
       </ng-container>
-    </p>
-
+    </div>
   </div>
 </div>
