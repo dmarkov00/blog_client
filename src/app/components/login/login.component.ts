@@ -23,8 +23,9 @@ export class LoginComponent implements OnInit {
     this.userService.login(user)
       .subscribe(result => {
         if (result.ok) {
-          this.router.navigate(['/home']);
           alert('You are going to be logged in and redirected to the home page');
+
+          this.router.navigate(['home']);
         } else {
           alert(result.error.message);
         }
