@@ -36,8 +36,17 @@ export class CreatePostComponent implements OnInit {
         this.router.navigate(['/personal-posts/list']);
 
       } else {
-        alert('Some error while making post');
+        this.displayErrorNotification('Some error while making post');
       }
+    });
+  }
+
+  displayErrorNotification(error: string): void {
+    this.snotifyService.error(error, {
+      timeout: 4000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true
     });
   }
 }
